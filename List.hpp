@@ -183,11 +183,11 @@ public:
 		{
 			function = tempNode->function;
 			description = tempNode->description;
-			return true;
 			if (toflag == true)
 			{
 				chosenflag = true;
 			}
+			return true;
 		}
 	}
 
