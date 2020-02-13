@@ -1,0 +1,69 @@
+****************************************************************************************
+PA1 Grade
+
+* ADVANTAGES/DISADVANTAGES LINKED LIST (/4pts)
+* ADVANTAGES/DISADVANTAGES ARRAY (/4pts)
+
+* Developing a correct class List template with 2 parameters (/30pts)
+    - 6 pts for correct insertAtFront () – needed when loading from commands.csv
+    - 7 pts for correct removeNode () – needed when removing commands from the list
+    - 10 pts for other functions needed to operate on the list
+    - 4 pts for correct data members
+    - 3pts for correct constructors/destructors
+
+* Main Menu Requirement (/5pts)
+
+* Play Game Requirement (/20pts)
+    - 2 pts for correctly prompting user for the number of questions.
+    - 8 pts for correctly generating a command and 3 descriptions
+    - 3 pts for verifying answer
+    - 2 pts for updating player points
+    - 5 pts for generating correct number of questions
+
+* Load Previous Game Requirement (/7pts)
+
+* Add Command Requirement (/5pts)
+
+* Remove Command Requirement (/5pts)
+
+* Exit Requirement (/10pts)
+    - 4 pts for correctly writing to commands.csv
+    - 3 pts for correctly writing to profiles.csv
+    - 2 pts for deallocating linked list memory
+    - 1 pt for closing the files
+
+* Appropriate class and top-down design (/5pts)
+
+* Adherence to proper programming style established for the class and comments (/5pts)
+
+Total Grade: 65
+
+****************************************************************************************
+
+Don't panic, I gave you your grade because code wouldn't build. 
+Come see me at my office hours if you want to try to get points back. 
+If my hours don't work for you, shoot me an email. 
+Email: omar.finol-evans@wsu.edu
+Code crashes, here's examples of the errors I'm seeing:
+
+
+In file included from main.cpp:3:0:
+matchGame.hpp:5:10: fatal error: List.cpp: No such file or directory
+ #include "List.cpp"
+          ^~~~~~~~~~
+compilation terminated.
+In file included from matchGame.cpp:1:0:
+matchGame.hpp:5:10: fatal error: List.cpp: No such file or directory
+ #include "List.cpp"
+          ^~~~~~~~~~
+compilation terminated.
+
+In file included from matchGame.hpp:3:0,
+                 from main.cpp:3:
+List.hpp: In member function ‘void List<T>::populateList(std::fstream&)’:
+List.hpp:55:16: error: there are no arguments to ‘strtok’ that depend on a template parameter, so a declaration of ‘strtok’ must be available [-fpermissive]
+     function = strtok(temp, ","); //Tokenate the strings
+                ^~~~~~
+List.hpp:55:16: note: (if you use ‘-fpermissive’, G++ will accept your code, but allowing the use of an undeclared name is deprecated)
+List.hpp:56:19: error: there are no arguments to ‘strtok’ that depend on a template parameter, so a declaration of ‘strtok’ must be available [-fpermissive]
+     description = strtok(NULL, ",");
