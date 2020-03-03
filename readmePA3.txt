@@ -1,1 +1,4 @@
-I had memory allocation issues with my VirtualBox due to limited resources and was unable to compile the entire program at once unless all but one of the trees and it's functions are commented out. However, it works outside of the VirtualBox. I suspect this is just an issue with my VirtualBox setup but if the same issue arrises, commenting out some of the trees worked. Hopefully this is not the case for you.
+I had memory allocation issues with my VirtualBox due to limited resources and was unable to compile 
+the entire program at once unless all but one of the trees and it's functions are commented out. 
+However, it works outside of the VirtualBox. I suspect this is just an issue with my VirtualBox setup 
+but if the same issue arrises, commenting out some of the trees worked. Hopefully this is not the case for you.
