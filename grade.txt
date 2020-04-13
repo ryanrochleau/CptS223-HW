@@ -1,0 +1,50 @@
+****************************************************************************************
+PA3 Grade
+
+* Class, Code, and File Design Requirements (60 pts):
+    - Create concrete class called CancerData (/5pts)
+        - Contains private variables position/name
+    - AVL Node Implementation (/10ts)
+    - AVLTree Implementation (/35pts)
+        - Minus 5 pts because no destructor
+    - You must implmenet code to open, process, and close data files. (/10pts)
+
+* Testing and Reporting Requirements (/20pts)
+
+* Makefile Requirement (/5pts)
+
+* Other Requirements (/10pts)
+
+* Adherence to proper programming style established for the class and comments (/5pts)
+
+Total Grade: 65
+
+****************************************************************************************
+
+Your code checks out, actually looks really good.
+
+But when I run the make-file it produces a.out, which segfaults immediately when I run it:
+
+omarfevans@DESKTOP-DJJ2LDJ:/mnt/d/Documents/CS 223 TA/cs223-rrochlea$ make -f makefile
+g++ -g -Wall -std=c++11 main.cpp AVLNode.hpp AVLTree.hpp CancerData.cpp CancerData.hpp
+In file included from main.cpp:1:0:
+AVLTree.hpp: In member function ‘T AVLTree<T>::findMaxHelper(AVLNode<T>*) [with T = CancerData]’:
+AVLTree.hpp:196:3: warning: control reaches end of non-void function [-Wreturn-type]
+   }
+   ^
+AVLTree.hpp: In member function ‘T AVLTree<T>::findMinHelper(AVLNode<T>*) [with T = CancerData]’:
+AVLTree.hpp:180:3: warning: control reaches end of non-void function [-Wreturn-type]
+   }
+   ^
+In file included from AVLTree.hpp:1:0,
+                 from main.cpp:1:
+AVLNode.hpp: In member function ‘int AVLNode<T>::getHeight() [with T = CancerData]’:
+AVLNode.hpp:51:4: warning: nonnull argument ‘this’ compared to NULL [-Wnonnull-compare]
+    if (this == nullptr)
+    ^~
+./a.out
+makefile:2: recipe for target 'prog' failed
+make: *** [prog] Segmentation fault (core dumped)
+
+
+Email me at omar.finol-evans@wsu.edu if you want to fix your grade
