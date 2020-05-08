@@ -2,12 +2,15 @@
 
 int main(void)
 {
+	int num = 7;
 	std::ifstream maleData, femaleData, bothData;
 	maleData.open("./mencancerdata2018.csv");
 	femaleData.open("./womencancerdata2018.csv");
 	bothData.open("./bothcancerdata2018.csv");
 
-	AVLTree<CancerData> maleTree(maleData), femaleTree(femaleData), bothTree(bothData);
+	AVLTree<CancerData> maleTree(maleData), 
+		femaleTree(femaleData), 
+		bothTree(bothData);
 
 
 	femaleTree.printInOrder();

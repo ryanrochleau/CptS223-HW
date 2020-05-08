@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 #include "CancerData.hpp"
 
 template <typename T>
@@ -38,11 +39,11 @@ public:
 		{
 			return this->data;
 		}
-		AVLNode<T>* getLeftPtr()
+		AVLNode<T>*& getLeftPtr()
 		{
 			return this->leftPtr;
 		}
-		AVLNode<T>* getRightPtr()
+		AVLNode<T>*& getRightPtr()
 		{
 			return this->rightPtr;
 		}

@@ -21,9 +21,9 @@ public:
 			while (!input_file.eof())
 			{
 				input_file.getline(temp, 256);
-				country = strtok(temp, ",");
-				sCancerRate = strtok(NULL, ",");
-				dCancerRate = stod(sCancerRate);
+				country = std::strtok(temp, ",");
+				sCancerRate = std::strtok(NULL, ",");
+				dCancerRate = std::stod(sCancerRate);
 				rootNode = insert(rootNode, country, dCancerRate);
 				i++;
 			}
@@ -34,7 +34,7 @@ public:
 			clear(this->rootNode);
 		}
 	//Insert
-		AVLNode<T>* insert(AVLNode<T>* root,std::string& countryInput, double& rateInput)
+		AVLNode<T>* insert(AVLNode<T>*& root,std::string& countryInput, double& rateInput)
 		{
 			CancerData newData(countryInput, rateInput);
 			int currentBalance = 0;
@@ -44,7 +44,7 @@ public:
 				return newNode(newData);
 			}
 		//Go left
-			else if(newData < root->getData())
+			else if(newData < root->getData() || newData == root->getData())
 			{
 				root->setLeftPtr(insert(root->getLeftPtr(), countryInput, rateInput));
 			}
