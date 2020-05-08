@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstring>
 #include "CancerData.hpp"
 
 template <typename T>
@@ -47,11 +46,11 @@ public:
 		{
 			return this->rightPtr;
 		}
-		int getHeight()
+		int getHeight(AVLNode* ptr)
 		{
-			if (this == nullptr)
+			if (ptr == nullptr)
 				return -1;
-			return this->nodeHeight;
+			return ptr->nodeHeight;
 		}
 	//Setters
 		void setData(T data)
