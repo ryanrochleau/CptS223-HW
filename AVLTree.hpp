@@ -21,9 +21,9 @@ public:
 			while (!input_file.eof())
 			{
 				input_file.getline(temp, 256);
-				country = strtok(temp, ",");
-				sCancerRate = strtok(NULL, ",");
-				dCancerRate = stod(sCancerRate);
+				country = std::strtok(temp, ",");
+				sCancerRate = std::strtok(NULL, ",");
+				dCancerRate = std::stod(sCancerRate);
 				rootNode = insert(rootNode, country, dCancerRate);
 				i++;
 			}
@@ -34,7 +34,7 @@ public:
 			clear(this->rootNode);
 		}
 	//Insert
-		AVLNode<T>* insert(AVLNode<T>* root,std::string& countryInput, double& rateInput)
+		AVLNode<T>* insert(AVLNode<T>*& root,std::string& countryInput, double& rateInput)
 		{
 			CancerData newData(countryInput, rateInput);
 			int currentBalance = 0;
@@ -44,7 +44,7 @@ public:
 				return newNode(newData);
 			}
 		//Go left
-			else if(newData < root->getData())
+			else if(newData < root->getData() || newData == root->getData())
 			{
 				root->setLeftPtr(insert(root->getLeftPtr(), countryInput, rateInput));
 			}
@@ -55,10 +55,10 @@ public:
 			}
 
 		//Set new nodes height
-			if (root->getLeftPtr()->getHeight() > root->getRightPtr()->getHeight()) 
-				root->setNodeHeight(1 + root->getLeftPtr()->getHeight());
+			if (root->getHeight(root->getLeftPtr()) > root->getHeight(root->getRightPtr()))
+				root->setNodeHeight(1 + root->getHeight(root->getLeftPtr()));
 			else
-				root->setNodeHeight(1 + root->getRightPtr()->getHeight());
+				root->setNodeHeight(1 + root->getHeight(root->getRightPtr()));
 
 			currentBalance = checkBalance(root);
 
@@ -99,7 +99,7 @@ public:
 		{
 			if (root == nullptr)
 				return 0;
-			return root->getRightPtr()->getHeight() - root->getLeftPtr()->getHeight();
+			return root->getHeight(root->getRightPtr()) - root->getHeight(root->getLeftPtr());
 		}
 	//Left Rotation
 		AVLNode<T>* leftRotate(AVLNode<T>* root)
@@ -112,15 +112,15 @@ public:
 			root->setRightPtr(lnewRoot);
 
 		//Update newRoot and root heights, lnewRoot is at same height
-			if (root->getLeftPtr()->getHeight() > root->getRightPtr()->getHeight())
-				root->setNodeHeight(1 + root->getLeftPtr()->getHeight());
+			if (root->getHeight(root->getLeftPtr()) > root->getHeight(root->getRightPtr()))
+				root->setNodeHeight(1 + root->getHeight(root->getLeftPtr()));
 			else
-				root->setNodeHeight(1 + root->getRightPtr()->getHeight());
+				root->setNodeHeight(1 + root->getHeight(root->getRightPtr()));
 
-			if (newRoot->getLeftPtr()->getHeight() > newRoot->getRightPtr()->getHeight())
-				newRoot->setNodeHeight(1 + newRoot->getLeftPtr()->getHeight());
+			if (newRoot->getHeight(root->getLeftPtr()) > newRoot->getHeight(root->getRightPtr()))
+				newRoot->setNodeHeight(1 + newRoot->getHeight(root->getLeftPtr()));
 			else
-				newRoot->setNodeHeight(1 + newRoot->getRightPtr()->getHeight());
+				newRoot->setNodeHeight(1 + newRoot->getHeight(root->getRightPtr()));
 
 			return newRoot;
 		}
@@ -135,15 +135,15 @@ public:
 			root->setLeftPtr(rnewRoot);
 
 		//Update newRoot and root heights, rnewRoot is at same height
-			if (root->getLeftPtr()->getHeight() > root->getRightPtr()->getHeight())
-				root->setNodeHeight(1 + root->getLeftPtr()->getHeight());
+			if (root->getHeight(root->getLeftPtr()) > root->getHeight(root->getRightPtr()))
+				root->setNodeHeight(1 + root->getHeight(root->getLeftPtr()));
 			else
-				root->setNodeHeight(1 + root->getRightPtr()->getHeight());
+				root->setNodeHeight(1 + root->getHeight(root->getRightPtr()));
 
-			if (newRoot->getLeftPtr()->getHeight() > newRoot->getRightPtr()->getHeight())
-				newRoot->setNodeHeight(1 + newRoot->getLeftPtr()->getHeight());
+			if (newRoot->getHeight(root->getLeftPtr()) > newRoot->getHeight(root->getRightPtr()))
+				newRoot->setNodeHeight(1 + newRoot->getHeight(root->getLeftPtr()));
 			else
-				newRoot->setNodeHeight(1 + newRoot->getRightPtr()->getHeight());
+				newRoot->setNodeHeight(1 + newRoot->getHeight(root->getRightPtr()));
 
 			return newRoot;
 		}
@@ -269,10 +269,10 @@ public:
 				}
 			}
 		//Update height
-			if (root->getLeftPtr()->getHeight() > root->getRightPtr()->getHeight())
-				root->setNodeHeight(1 + root->getLeftPtr()->getHeight());
+			if (root->getHeight(root->getLeftPtr()) > root->getHeight(root->getRightPtr()))
+				root->setNodeHeight(1 + root->getHeight(root->getLeftPtr()));
 			else
-				root->setNodeHeight(1 + root->getRightPtr()->getHeight());
+				root->setNodeHeight(1 + root->getHeight(root->getRightPtr()));
 
 			currentBalance = checkBalance(root);
 

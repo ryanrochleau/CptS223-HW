@@ -40,7 +40,7 @@
 	}
 	bool operator == (const CancerData& d1, const CancerData& d2)
 	{
-		if (d1.cancerRate == d2.cancerRate && d1.country == d2.country)
+		if (d1.cancerRate == d2.cancerRate)
 			return true;
 		else
 			return false;

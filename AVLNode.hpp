@@ -38,19 +38,19 @@ public:
 		{
 			return this->data;
 		}
-		AVLNode<T>* getLeftPtr()
+		AVLNode<T>*& getLeftPtr()
 		{
 			return this->leftPtr;
 		}
-		AVLNode<T>* getRightPtr()
+		AVLNode<T>*& getRightPtr()
 		{
 			return this->rightPtr;
 		}
-		int getHeight()
+		int getHeight(AVLNode* ptr)
 		{
-			if (this == nullptr)
+			if (ptr == nullptr)
 				return -1;
-			return this->nodeHeight;
+			return ptr->nodeHeight;
 		}
 	//Setters
 		void setData(T data)
